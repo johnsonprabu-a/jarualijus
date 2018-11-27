@@ -1,0 +1,5 @@
+include:
+  - dnsmasq
+
+roles:
+  - dnsmasq
