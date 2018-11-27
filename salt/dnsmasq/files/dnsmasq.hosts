@@ -1,0 +1,16 @@
+{%- set dnsmasq = pillar.get('dnsmasq', {}) -%}
+{%- set zones = dnsmasq.get('hosts', {}) -%}
+{%- for zone, hosts in zones|dictsort %}
+{%- if hosts is not mapping %}
+{%- if hosts is iterable and hosts is not string %}
+  {%- for ip in hosts %}
+{{ ip }} {{ zone }}
+  {% endfor %}
+{%- else %}
+{{ hosts }} {{ zone }}
+{%- else %}
+{%- for host, ip in hosts|dictsort %}
+{{ ip }} {{ host }}.{{ zone }}
+{%- endfor -%}
+{%- endif %}
+{% endfor -%}
