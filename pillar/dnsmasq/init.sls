@@ -39,8 +39,9 @@ dnsmasq:
   # duplicated names in Pillar and to make it easier to manage.
   hosts:
     jarualijus.com:
-      dns: 10.10.10.1
-      vpn: 10.10.10.2
+      dns:   10.10.10.1
+      vpn:   10.10.10.2
+      salt:  10.249.209.158
     jarualijus.net:
       www: 10.10.10.3
       mail: 10.10.10.4
