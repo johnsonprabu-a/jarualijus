@@ -39,13 +39,13 @@ dnsmasq:
   # duplicated names in Pillar and to make it easier to manage.
   hosts:
     jarualijus.com:
-      dns:   10.10.10.1
-      vpn:   10.10.10.2
-      salt:  10.249.209.158
+      dns:   192.168.4.189
+      vpn:   192.168.4.189
+      salt:  192.168.4.189
     jarualijus.net:
-      www: 10.10.10.3
-      mail: 10.10.10.4
-    test.jarualijus.org: 10.10.10.5
+      www: 192.168.4.189
+      mail: 192.168.4.189
+    test.jarualijus.org: 192.168.4.189
 
   # CNAME handling
   # Similarly to hosts this can deal with single and multiple entries in the
