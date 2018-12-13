@@ -1,0 +1,23 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+{%- set bridge_ip = salt['cmd.run']("cat /opt/ip") -%}
+{%- set nport = salt['cmd.run']('cat /opt/nport') -%}
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto br0
+iface br0 inet static
+       address {{ bridge_ip }}
+       netmask 255.255.255.0
+       gateway 192.168.4.1
+       dns-nameservers 8.8.8.8
+       bridge_ports {{ nport }}
+       bridge_ifaces {{ nport }}
+       up ifconfig {{ nport }} up
+
+iface {{ nport }} inet manual
+

@@ -1,0 +1,5 @@
+include:
+  - lxd
+
+role:
+  - lxd

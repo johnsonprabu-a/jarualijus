@@ -1,0 +1,5 @@
+#!/bin/bash
+ip=`hostname -I | egrep -o [0-9]+.[0-9]+.[0-9]+.[0-9]+|awk '{print $1;exit}'`
+network_port=$(ip link show | egrep -o enp[0-9]+s0)
+echo $ip > /opt/ip
+echo $network_port > /opt/nport
