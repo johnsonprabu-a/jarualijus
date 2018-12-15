@@ -13,6 +13,10 @@ gather_ip_port:
     - require:
       - file: push_base_script
 
+backup_existing_config:
+  cmd.run:
+    - name: "cp -av /etc/network/interfaces /opt/"
+
 configuring_br0:
   file.managed:
     - name: /etc/network/interfaces

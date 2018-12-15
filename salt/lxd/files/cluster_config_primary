@@ -1,6 +1,7 @@
+{% set ip = salt['grains.get']('fqdn_ip4')[0].split('-')[0] %}
 config:
   core.trust_password: alpha
-  core.https_address: 0.0.0.0:8443
+  core.https_address: {{ ip }}:8443
   images.auto_update_interval: 15
 storage_pools:
 - name: default
@@ -9,7 +10,7 @@ networks:
 - name: lxdbr0
   type: bridge
   config:
-    ipv4.address: none
+    ipv4.address: 192.168.100.14/24
     ipv6.address: none
 profiles:
 - name: default
@@ -24,5 +25,5 @@ profiles:
       parent: br0
       type: nic
 cluster:
-  server_name: node1
+  server_name: {{ node }}
   enabled: true
