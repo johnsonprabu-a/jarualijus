@@ -27,3 +27,7 @@ configuring_br0:
     - template: jinja
     - require:
       - cmd: gather_ip_port
+
+lets_reboot:
+  cmd.run:
+    - name: "Kindly verify network configuration and reboot the machine"
