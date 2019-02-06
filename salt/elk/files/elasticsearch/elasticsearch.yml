@@ -52,11 +52,28 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-network.host: {{ HOST }}
 #
 # Set a custom port for HTTP:
 #
 #http.port: 9200
+
+# Defining Node name
+
+node.name: {{ NNAME }}
+
+#define node 1 as master-eligible:
+node.master: true
+
+#define nodes 2 and 3 as data nodes:
+node.data: true
+
+#enter the private IP and port of your node:
+network.host: {{ HOST }}
+
+
+#detail the private IPs of your nodes:
+discovery.zen.ping.unicast.hosts: ["192.168.4.190","192.168.4.191"]
+
 #
 # For more information, consult the network module documentation.
 #
@@ -70,6 +87,13 @@ network.host: {{ HOST }}
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
 #
 #discovery.zen.minimum_master_nodes: 
+
+discovery.zen.minimum_master_nodes: 1
+
+# Disabling Swapping
+
+#bootstrap.memory_lock: true
+
 #
 # For more information, consult the zen discovery module documentation.
 #
@@ -86,3 +110,5 @@ network.host: {{ HOST }}
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+
+

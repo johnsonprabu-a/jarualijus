@@ -1,7 +1,10 @@
 include:
   - lxd
   - gpg
+  - elk.elasticsearch
+
 
 roles:
   - lxd
-  - wazuh-elk.filebeat
+  - elk.elasticsearch
+

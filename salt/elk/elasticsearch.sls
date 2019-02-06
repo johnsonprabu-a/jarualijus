@@ -1,3 +1,5 @@
+#Ref: https://logz.io/blog/elasticsearch-cluster-tutorial/
+
 {% set e_config = pillar.get('el_config') %} 
 
 elasticsearch-repo:
@@ -29,5 +31,36 @@ manage_config_file:
       - pkg: elasticsearch-repo
     - context: {
         CLNAME:                          {{ e_config.cluster }},
-        HOST:                            {{ salt['grains.get']('ipv4')[1].split('-')[0] }}
+        HOST:                            {{ salt['grains.get']('ipv4')[1].split('-')[0] }},
+        NNAME:                           {{ grains['id'] }}
     }
+
+#Ref: https://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html#salt.states.file.append
+
+/etc/default/elasticsearch:
+  file.append:
+    - text:
+      - MAX_LOCKED_MEMORY=unlimited
+
+/etc/sysctl.conf:
+  file.append:
+    - text:
+      - vm.max_map_count=262144
+
+/etc/security/limits.conf:
+  file.append:
+    - text:
+      - * soft nofile 100000
+      - * hard nofile 100000
+
+
+
+Service_check_restart:
+  service.running:
+    - name: elasticsearch
+    - enable: True
+    - full_restart: True
+    - require:
+      - pkg: elasticsearch-repo
+    - watch:
+      - file: manage_config_file
