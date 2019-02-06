@@ -2,6 +2,7 @@ include:
   - lxd
   - lxd_launch
 
-role:
+roles:
   - lxd
   - lxd_launch
+  - wazuh-elk.wazuh-server

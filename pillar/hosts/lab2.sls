@@ -2,5 +2,6 @@ include:
   - lxd
   - gpg
 
-role:
+roles:
   - lxd
+  - wazuh-elk.filebeat
