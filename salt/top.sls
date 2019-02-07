@@ -10,3 +10,6 @@ base:
   'roles:lxd_launch':
     - match: pillar
     - lxd_launch
+  'roles: elk':
+    - match: pillar
+    - elk

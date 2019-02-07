@@ -21,3 +21,10 @@ filebeat_service:
     - require:
       - pkg: elk-repo
 
+
+# Load the Wazuh template for Elasticsearch
+
+## Reference: https://documentation.wazuh.com/current/user-manual/kibana-app/troubleshooting.html
+
+# curl https://raw.githubusercontent.com/wazuh/wazuh/3.8/extensions/elasticsearch/wazuh-elastic6-template-alerts.json | curl -X PUT "http://localhost:9200/_template/wazuh" -H 'Content-Type: application/json' -d @-
+

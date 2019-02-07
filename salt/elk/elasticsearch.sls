@@ -1,5 +1,6 @@
 #Ref: https://logz.io/blog/elasticsearch-cluster-tutorial/
 
+{% set e_version = pillar.get('elk') %}
 {% set e_config = pillar.get('el_config') %} 
 
 elasticsearch-repo:
@@ -11,7 +12,7 @@ elasticsearch-repo:
     - key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
   pkg.installed:
-    - name: elasticsearch=6.6.0
+    - name: elasticsearch={{ e_version.elasticsearch }}
     - refresh: True
 
 elasticsearch_daemon_reload:
@@ -50,8 +51,8 @@ manage_config_file:
 /etc/security/limits.conf:
   file.append:
     - text:
-      - * soft nofile 100000
-      - * hard nofile 100000
+      - '* soft nofile 100000'
+      - '* hard nofile 100000'
 
 
 
