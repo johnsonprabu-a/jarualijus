@@ -15,7 +15,7 @@ elasticsearch-repo:
     - name: elasticsearch={{ e_version.elasticsearch }}
     - refresh: True
 
-elasticsearch_daemon_reload:
+elasticsearch_autostart:
   cmd.run:
     - name: 'update-rc.d elasticsearch defaults 95 10'
 
