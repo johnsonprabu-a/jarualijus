@@ -1,0 +1,19 @@
+{
+    "bootstrap": false,
+    "server": true,
+    "data_dir": "/var/consul",
+    "datacenter": "Test",
+    "ui_dir": "/var/consul/web_ui/",
+    "log_level": "INFO",
+    "enable_syslog": true,
+    "client_addr": "0.0.0.0",
+    "start_join": ["192.168.4.61", "192.168.4.62", "192.168.4.63"],
+    "verify_server_hostname": false,
+    "ca_file": "/etc/consul.d/server/consul-agent-ca.pem",
+    "cert_file": "/etc/consul.d/server/Test-server-consul-0.pem",
+    "key_file": "/etc/consul.d/server/Test-server-consul-0-key.pem",
+    "ports": {
+      "http": -1,
+      "https": 8501
+  }
+}

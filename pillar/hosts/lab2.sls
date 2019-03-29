@@ -1,10 +1,10 @@
 include:
   - lxd
   - gpg
-  - elk.elasticsearch
+  - lxd_launch
 
 
 roles:
   - lxd
-  - elk.elasticsearch
+  - lxd_launch
 

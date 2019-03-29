@@ -1,0 +1,17 @@
+[Unit]
+Description=Consul
+Requires=network.target
+After=systemd-user-sessions.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d/server -retry-interval=300s  -retry-max=10 -bind {{ salt['grains.get']('fqdn_ip4')|first() }}
+PIDFile=/var/consul/consul.pid
+KillMode=mixed
+TimeoutStopSec=30
+User=consul
+LimitNOFILE=100000
+
+[Install]
+WantedBy=multi-user.target
+
