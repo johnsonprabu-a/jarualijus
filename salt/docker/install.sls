@@ -2,6 +2,7 @@
 # Ref: https://www.edureka.co/blog/docker-tutorial
 #      https://docs.docker.com/install/linux/docker-ce/ubuntu/
 # commands: https://www.edureka.co/blog/docker-commands/
+# https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 
 
 install_essentials:
